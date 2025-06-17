@@ -37,7 +37,7 @@ function parseInput(input) {
   return input.split(',').map(Number);
 }
 
-// Prompt user input
+// USER INPUT
 rl.question("Enter values for X (comma separated): ", (xInput) => {
   rl.question("Enter values for Y (comma separated): ", (yInput) => {
     const x = parseInput(xInput);
