@@ -10,7 +10,7 @@ fn imperative_example() {
         }
     }
 
-    println!("Imperative: {:?}", result); // [4, 16, 36]
+    println!("Imperative: {:?}", result); 
 }
 
 // -----------------------------------------------------------------------------------------
@@ -23,7 +23,7 @@ fn declarative_example() {
         .map(|&n| n * n)
         .collect();
 
-    println!("Declarative: {:?}", result); // [4, 16, 36]
+    println!("Declarative: {:?}", result); 
 }
 
 // -----------------------------------------------------------------------------------------
