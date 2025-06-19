@@ -7,7 +7,7 @@ func EvenOdd(num int) string {
     return results[num%2]
 }
 
-func main() {
+func Main() {
     var n int
     fmt.Print("Enter a number: ")
     fmt.Scan(&n)
