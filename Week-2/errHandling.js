@@ -21,6 +21,11 @@ async function asyncFunction() {
   }
 }
 
+function asyncFunctionwithCallback(callback) {
+    fs.readFile('Notfound.html', 'utf-8')
+        .then(data => callback(null, data))
+        .catch(err => callback(err));
+}
 
 function asyncWithPromise() {
   fs.readFile('NotFound.txt', 'utf-8')
@@ -31,6 +36,9 @@ function asyncWithPromise() {
     });
 }
 
+
+
 syncFunction();
 asyncFunction();
 asyncWithPromise();
+asyncFunctionwithCallback();
