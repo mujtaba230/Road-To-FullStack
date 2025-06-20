@@ -1,140 +1,185 @@
-Here's your professionally formatted "Data Structures & Algorithms Cheat Sheet" for clarity, maintainability, and quick revision:
-🔹 Data Structures
 
- 1. List
-  Types:   (Singly, Doubly, Circular)
-  In Python, lists are dynamic arrays.
-    Common operations:   Append ($O(1)$ amortized), Insert/Delete ($O(n)$)
+---
 
- 2. Array
-  Fixed-size container.
-    Insertion/Deletion:   O(n)
-    Access:   O(1)
+### 🔹 **Data Structures**
 
-3. Stack
-    LIFO   (Last-In, First-Out)
-    Operations:   `push`, `pop`, `peek`
-    Use Cases:   Expression parsing, backtracking, undo functionality
+**1. List (Python)**
 
-4. Queue
-    FIFO   (First-In, First-Out)
-    Operations:   `enqueue`, `dequeue`
-    Variants:   Circular Queue, Deque, Priority Queue
+* Types: Singly, Doubly, Circular
+* Operations: `append` O(1), `insert/delete` O(n)
 
-5. Maps (Hash Tables)
-  Key-value storage.
-    Collision Resolution:  
-      Chaining (using linked lists)
-        Open Addressing:  
-          Linear Probing
-          Quadratic Probing
-          Double Hashing
+**2. Array**
 
+* Fixed size, O(1) access
+* Insert/Delete: O(n)
 
-🔹 Algorithms
+**3. Stack (LIFO)**
 
-1. Divide and Conquer
-    Use Case:   Problems with independent subproblems.
-    Examples:   Merge Sort, Quick Sort, Binary Search
-    Time Efficiency:   $O(\log n)$ improvements
-    Caveat:   Recursive overhead
+* Ops: `push`, `pop`, `peek`
+* Use: Parsing, backtracking, undo
 
-2. Greedy Approach
-    Use for:   Optimization problems
-    Principle:   Choose locally optimal at every step.
-    Works When:   Greedy-choice property + Optimal substructure hold
-    Examples:   Dijkstra, Kruskal’s, Prim’s, Huffman Coding, Activity Selection
-    Fails In:   Coin Change, 0/1 Knapsack
+**4. Queue (FIFO)**
 
-3. Recursion
-    Best For:   Trees, Backtracking, Math
-    Examples:   Tree Traversals (Inorder, Preorder, Postorder)
-    Time Complexity:   Depends on branching factor
-    Caveat:   Stack Overflow risk if base case not handled
+* Ops: `enqueue`, `dequeue`
+* Types: Circular, Deque, Priority Queue
 
-4. Optimization Techniques
-  Top-Down (with recursion)
-  Bottom-Up (Dynamic Programming tabulation)
-    Memoization:   Store results of expensive function calls
-    Example:   LCS (Longest Common Subsequence)
+**5. Maps / Hash Tables**
 
+* Key-value pairs
+* Collision Handling: Chaining, Open Addressing (Linear, Quadratic, Double Hashing)
 
-🔹 Searching Algorithms
+---
 
-  Linear Search   | $O(1)$      | $O(n)$       | $O(1)$  | Unsorted data |
-  Binary Search   | $O(1)$      | $O(\log n)$  | $O(1)$  | Sorted data only |
+### 🔹 **Algorithms**
 
+**1. Divide & Conquer**
 
+* Use: Independent subproblems
+* Examples: Merge Sort, Quick Sort, Binary Search
 
-🔹 Sorting Algorithms
+**2. Greedy**
 
-    Bubble Sort  
-      Best: $O(n)$
-      Worst: $O(n^2)$
-      Space: $O(1)$
-      Stable: Yes
-      Notes: Swaps adjacent elements.
+* Principle: Local optimum = Global optimum
+* Works When: Greedy-choice + Optimal substructure
+* Use: Dijkstra, Kruskal, Prim
+* Fails: 0/1 Knapsack, Coin Change
 
-    Selection Sort  
-      Best: $O(n^2)$
-      Worst: $O(n^2)$
-      Space: $O(1)$
-      Stable: No
-      Notes: Selects minimum from unsorted portion.
+**3. Recursion**
 
-    Insertion Sort  
-      Best: $O(n)$
-      Worst: $O(n^2)$
-      Space: $O(1)$
-      Stable: Yes
-      Notes: Efficient if nearly sorted.
+* Best for: Trees, Backtracking
+* Risk: Stack overflow if no base case
 
-    Merge Sort  
-      Best: $O(n \log n)$
-      Worst: $O(n \log n)$
-      Space: $O(1)$  (implies extra space if not in-place)
-      Stable: Yes
-      Notes: Divide and Merge strategy.
+**4. Optimization**
 
-    Quick Sort  
-      Best: $O(n \log n)$
-      Worst: $O(n^2)$
-      Space: $O(\log n)$
-      Stable: No
-      Notes: In-place, uses a pivot.
+* Top-Down (Memoization), Bottom-Up (DP Tabulation)
+* Example: LCS
 
-    Heap Sort  
-      Best: $O(n \log n)$
-      Worst: $O(n \log n)$
-      Space: $O(1)$
-      Stable: No
-      Notes: In-place, based on heap structure.
+---
 
- 🧹 Clean Code Principles (Robert C. Martin)
+### 🔹 **Searching**
 
-✅ Naming (Chapter 2)
-  Use   clear and descriptive names  .
-  Prefer pronounceable and searchable identifiers.
-  Maintain   consistent vocabulary   throughout the codebase.
-  Avoid type prefixes like `strName`, `iValue`.
-  Add   contextual clarity   to prevent ambiguity.
-  Good names eliminate the need for redundant comments.
+| Algorithm     | Best | Worst    | Data Type |
+| ------------- | ---- | -------- | --------- |
+| Linear Search | O(1) | O(n)     | Unsorted  |
+| Binary Search | O(1) | O(log n) | Sorted    |
 
-✅ Formatting (Chapter 5)
-  Code should read like a story.
-  Keep functions short and focused (ideally under 20 lines).
-  Use blank lines to   separate logical sections  .
-  Limit line length (~120 characters).
-  Follow consistent   indentation and team conventions  .
-  Group related code vertically for better readability.
-  Clean formatting improves both readability and maintainability.
+---
 
+### 🔹 **Sorting**
 
-⚙️ Error Handling in JavaScript
+| Algo           | Best       | Worst      | Stable | Space    | Notes                  |
+| -------------- | ---------- | ---------- | ------ | -------- | ---------------------- |
+| Bubble Sort    | O(n)       | O(n²)      | Yes    | O(1)     | Adjacent swaps         |
+| Selection Sort | O(n²)      | O(n²)      | No     | O(1)     | Min from unsorted      |
+| Insertion Sort | O(n)       | O(n²)      | Yes    | O(1)     | Good for nearly sorted |
+| Merge Sort     | O(n log n) | O(n log n) | Yes    | O(n)     | Divide and merge       |
+| Quick Sort     | O(n log n) | O(n²)      | No     | O(log n) | Pivot-based, in-place  |
+| Heap Sort      | O(n log n) | O(n log n) | No     | O(1)     | Uses heap, in-place    |
 
-  Use `try...catch` for synchronous code.
-  For asynchronous code, use `.catch()` or `try...await...catch`.
-  Always handle potential exceptions (network errors, JSON parse errors, etc.)
-  Avoid empty `catch` blocks.
-  Log   meaningful error messages  .
-  Gracefully degrade the user experience on errors.
+---
+
+## 🧹 **Clean Code Principles (Robert C. Martin)**
+
+**🔸 Naming**
+
+* Descriptive, searchable, and consistent
+* Avoid prefixes like `strName`, use contextual clarity
+
+**🔸 Formatting**
+
+* Small, focused functions
+* Use blank lines for logical separation
+* Keep line length \~120 chars
+* Group related code vertically
+
+---
+
+# ✅ **JavaScript Error Handling Cheat Sheet**
+
+---
+
+### 🔹 **1. try / catch / finally**
+
+```javascript
+try {
+  riskyCode();
+} catch (err) {
+  console.log(err.message);
+} finally {
+  console.log("Always runs");
+}
+```
+
+---
+
+### 🔹 **2. throw (Custom Errors)**
+
+```javascript
+if (age < 18) throw new Error("Underage");
+```
+
+Creates an **Error object** with `name` and `message`.
+
+---
+
+### 🔹 **3. Common Error Types**
+
+| Name             | When It Occurs           |
+| ---------------- | ------------------------ |
+| `EvalError`      | Improper use of `eval()` |
+| `RangeError`     | Number out of range      |
+| `ReferenceError` | Undefined variable       |
+| `SyntaxError`    | Invalid code syntax      |
+| `TypeError`      | Invalid type operation   |
+| `URIError`       | `decodeURI()` issues     |
+
+---
+
+### 🔹 **4. Input / HTML Validation**
+
+**HTML**:
+
+```html
+<input type="email" required />
+<input type="number" min="18" />
+```
+
+**JS**:
+
+```javascript
+if (!email.includes("@")) throw new Error("Invalid email");
+```
+
+---
+
+### 🔹 **5. Error-First Callbacks**
+
+```javascript
+fs.readFile("file.txt", (err, data) => {
+  if (err) return console.error(err);
+  console.log(data.toString());
+});
+```
+
+---
+
+### 🔹 **6. Callback Hell**
+
+Nested callbacks become unreadable:
+
+```javascript
+task1(() => {
+  task2(() => {
+    task3(() => {
+      // ...
+    });
+  });
+});
+```
+
+✅ **Solutions**:
+
+* Use **Promises**
+* Use **Async/Await**
+* Break into modular functions
+
