@@ -1,6 +1,3 @@
-Sure! Here's the overview without any tables, explained in clean points:
-
-
 
 ### 🌐 **HTTP (HyperText Transfer Protocol)**
 
@@ -35,14 +32,22 @@ Sure! Here's the overview without any tables, explained in clean points:
 
 ### 📊 **HTTP Status Codes Overview**
 
+## Success Codes
+
 * **200 OK** – The request was successful, and the server returned the expected response.
 * **201 Created** – A new resource was created successfully (usually after a POST request).
 * **204 No Content** – The request was successful, but there's no content to return.
+
+## Client Errors
+
 * **400 Bad Request** – The client sent invalid data (e.g., missing required fields).
 * **401 Unauthorized** – Authentication is required or the token is missing/invalid.
 * **403 Forbidden** – The user is authenticated but doesn’t have permission.
 * **404 Not Found** – The requested resource does not exist.
 * **409 Conflict** – There’s a conflict, such as trying to create a duplicate record.
+
+## Server Errors
+
 * **500 Internal Server Error** – Something went wrong on the server.
 * **503 Service Unavailable** – The server is temporarily overloaded or under maintenance.
 
