@@ -11,12 +11,10 @@ var users = []models.User{
     {ID: "2", Name: "Bob", Email: "bob@example.com"},
 }
 
-// Get all users
 func GetUsers(c *gin.Context) {
     c.IndentedJSON(http.StatusOK, users)
 }
 
-// Get single user
 func GetUserByID(c *gin.Context) {
     id := c.Param("id")
     for _, user := range users {
@@ -28,7 +26,6 @@ func GetUserByID(c *gin.Context) {
     c.JSON(http.StatusNotFound, gin.H{"message": "user not found"})
 }
 
-// Create user
 func CreateUser(c *gin.Context) {
     var newUser models.User
     if err := c.BindJSON(&newUser); err != nil {
@@ -38,7 +35,6 @@ func CreateUser(c *gin.Context) {
     c.IndentedJSON(http.StatusCreated, newUser)
 }
 
-// Update user
 func UpdateUser(c *gin.Context) {
     id := c.Param("id")
     var updatedUser models.User
@@ -57,7 +53,7 @@ func UpdateUser(c *gin.Context) {
     c.JSON(http.StatusNotFound, gin.H{"message": "user not found"})
 }
 
-// Delete user
+
 func DeleteUser(c *gin.Context) {
     id := c.Param("id")
     for i, user := range users {

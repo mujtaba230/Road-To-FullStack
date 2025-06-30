@@ -267,3 +267,229 @@ JSON is a way to represent structured data as **key-value pairs**, similar to ho
   }
 }
 ```
+
+
+
+Use **GraphQL** when your project needs:
+
+### 1. **Flexible, Custom Data Fetching**
+
+* Clients can ask **only for the data they need** — nothing more, nothing less.
+* Perfect for **mobile apps**, **SPAs**, or multiple frontends.
+
+> 📌 Example: A mobile app only wants `name` and `email`, not the full user object.
+
+---
+
+### 2. **Multiple Resources in a Single Request**
+
+* GraphQL can fetch related data in one request (no multiple API calls).
+
+> 📌 Example: `user -> posts -> comments` in one query.
+
+---
+
+### 3. **Rapid Frontend Iteration**
+
+* Frontend teams can change queries **without waiting for backend changes**.
+* GraphQL APIs are **self-documenting** with tools like GraphiQL.
+
+---
+
+### 4. **Complex or Deeply Nested Data**
+
+* REST can get messy when fetching deeply related data.
+* GraphQL is designed for **nested queries**.
+
+---
+
+### 5. **You’re Building a Public API / BFF (Backend-for-Frontend)**
+
+* GraphQL makes a good choice for:
+
+  * Microservices aggregation
+  * Exposing APIs to 3rd parties with flexible contracts
+
+---
+
+## 🚫 **When *Not* to Use GraphQL**
+
+Avoid GraphQL when:
+
+### 1. **You Just Need Simple CRUD APIs**
+
+* For simple Create/Read/Update/Delete operations, **REST is faster to build** and easier to cache.
+
+> 📌 Example: Admin dashboards with basic CRUD needs.
+
+---
+
+### 2. **High Caching Efficiency Is Needed**
+
+* REST uses HTTP caching (GET/POST with cache headers) easily.
+* GraphQL requires **custom server-side caching**, which is complex.
+
+---
+
+### 3. **File Uploads**
+
+* REST handles file uploads (like via `multipart/form-data`) more naturally.
+* GraphQL needs special libraries/workarounds.
+
+---
+
+### 4. **Small Team or Short Project Timeline**
+
+* GraphQL has a learning curve (types, schemas, resolvers, etc.).
+* REST is often **quicker to prototype** if your team already knows it.
+
+---
+
+### 5. **Authorization is Per-Endpoint**
+
+* REST makes RBAC (role-based access) easier by separating endpoints.
+* GraphQL requires more **fine-grained control** inside resolvers.
+
+---
+
+## 🧠 Summary: GraphQL vs REST
+
+| Need                       | Best Choice |
+| -------------------------- | ----------- |
+| Customizable queries       | GraphQL     |
+| Simple endpoints           | REST        |
+| Deeply nested data         | GraphQL     |
+| Built-in caching           | REST        |
+| Rapid frontend flexibility | GraphQL     |
+| File uploads / binary data | REST        |
+
+---
+
+
+
+
+
+### What is cURL?
+
+[`cURL`](w) stands for **Client for URLs**. It is a command-line tool and a library (`libcurl`) used to transfer data to or from a server using a variety of [protocols](w), including:
+
+* [HTTP](w)/[HTTPS](w)
+* [FTP](w)
+* [SFTP](w)
+* [SMTP](w)
+* [LDAP](w)
+* [FILE](w)
+* and many more.
+
+It is widely used for **testing APIs**, downloading files, uploading data, and automating web requests.
+
+---
+
+### Basic Syntax
+
+```bash
+curl [options] [URL]
+```
+
+---
+
+### Common Use Cases & Examples
+
+#### 1. **GET Request (Default)**
+
+```bash
+curl https://api.example.com/data
+```
+
+* Retrieves data from the specified URL.
+
+#### 2. **Save Output to a File**
+
+```bash
+curl -o output.json https://api.example.com/data
+```
+
+* `-o` saves the response to a file instead of printing it.
+
+#### 3. **Add Headers**
+
+```bash
+curl -H "Authorization: Bearer TOKEN" https://api.example.com/data
+```
+
+* `-H` is used to set custom headers (like tokens, content-type, etc.).
+
+#### 4. **POST Request**
+
+```bash
+curl -X POST -H "Content-Type: application/json" -d '{"name":"John"}' https://api.example.com/users
+```
+
+* `-X` specifies the request method.
+* `-d` sends data in the request body.
+
+#### 5. **PUT Request**
+
+```bash
+curl -X PUT -H "Content-Type: application/json" -d '{"name":"John Updated"}' https://api.example.com/users/1
+```
+
+#### 6. **Delete Request**
+
+```bash
+curl -X DELETE https://api.example.com/users/1
+```
+
+---
+
+### Useful Options
+
+| Option             | Description                                        |
+| ------------------ | -------------------------------------------------- |
+| `-v`               | Verbose mode – shows full request/response details |
+| `-i`               | Includes HTTP response headers in the output       |
+| `-L`               | Follow redirects                                   |
+| `-u`               | Provide credentials (`username:password`)          |
+| `--data-urlencode` | URL-encodes the data before sending                |
+| `--form` or `-F`   | Used to upload files (multipart/form-data)         |
+
+---
+
+### Real Example (API Testing)
+
+```bash
+curl -X POST https://reqres.in/api/users \
+-H "Content-Type: application/json" \
+-d '{"name": "Syed", "job": "developer"}'
+```
+
+📌 This sends a POST request with JSON data to an API and returns a response with user data.
+
+---
+
+### Advanced Features
+
+* Works with cookies (`--cookie`, `--cookie-jar`)
+* Proxy support (`--proxy`)
+* SSL options (`--insecure`, `--cert`)
+* Rate limiting and retries (`--limit-rate`, `--retry`)
+
+---
+
+### Why is cURL Important?
+
+* It’s **cross-platform** and available on most operating systems.
+* It supports **many protocols**, making it versatile.
+* It’s **scriptable**, which makes it ideal for automation.
+* Essential for **API testing and debugging**.
+
+---
+
+### cURL vs Postman
+
+| Feature        | cURL         | Postman                        |
+| -------------- | ------------ | ------------------------------ |
+| Interface      | Command-line | GUI                            |
+| Scriptable     | Yes          | No (but supports test scripts) |
+| Automation     | Easy         | Medium (Collection Runner)     |
+| Learning Curve | Medium       | Easy                           |
