@@ -1,20 +1,27 @@
 const express = require('express');
+const axios = require('axios');
 const app = express();
 const PORT = 3000;
 
-
-app.get('/', (req, res) => {
-  res.send('Welcome to the Users API. Use /users to get data.');
-});
-
-
 app.use(express.json());
 
-let users = [
-  { id: 1, name: 'John Doe', email: 'john@example.com' },
-  { id: 2, name: 'Jane Smith', email: 'jane@example.com' }
-];
-let nextId = 3;
+let users = [];
+let nextId = 11; 
+
+async function fetchInitialUsers() {
+  try {
+    const response = await axios.get('https://jsonplaceholder.typicode.com/users');
+    users = response.data;
+    console.log('Fetched users from JSONPlaceholder.');
+  } catch (error) {
+    console.error('Failed to fetch users:', error.message);
+  }
+}
+
+// Home route
+app.get('/', (req, res) => {
+  res.send('Welcome! Use /users to get data from JSONPlaceholder.');
+});
 
 // GET all users
 app.get('/users', (req, res) => {
@@ -28,6 +35,7 @@ app.get('/users/:id', (req, res) => {
   res.json(user);
 });
 
+// CREATE new user
 app.post('/users', (req, res) => {
   const { name, email } = req.body;
   if (!name || !email)
@@ -38,8 +46,7 @@ app.post('/users', (req, res) => {
   res.status(201).json(newUser);
 });
 
-
-// UPDATE user by ID
+// UPDATE user
 app.put('/users/:id', (req, res) => {
   const { name, email } = req.body;
   const user = users.find(u => u.id === parseInt(req.params.id));
@@ -51,7 +58,7 @@ app.put('/users/:id', (req, res) => {
   res.json(user);
 });
 
-// DELETE user by ID
+// DELETE user
 app.delete('/users/:id', (req, res) => {
   const index = users.findIndex(u => u.id === parseInt(req.params.id));
   if (index === -1) return res.status(404).json({ error: 'User not found' });
@@ -60,7 +67,8 @@ app.delete('/users/:id', (req, res) => {
   res.json(deletedUser[0]);
 });
 
-// Start server
-app.listen(PORT, () => {
+// Start server and fetch initial data
+app.listen(PORT, async () => {
+  await fetchInitialUsers();
   console.log(`User API running at http://localhost:${PORT}`);
 });
