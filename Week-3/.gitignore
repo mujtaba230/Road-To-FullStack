@@ -1,0 +1,54 @@
+# -----------------------------
+# Global Settings
+# -----------------------------
+# Ignore macOS system files
+.DS_Store
+
+# -----------------------------
+# Python / Flask (Flask-CRUD)
+# -----------------------------
+Flask-CRUD/__pycache__/
+Flask-CRUD/**/*.pyc
+Flask-CRUD/.env
+Flask-CRUD/venv/
+Flask-CRUD/instance/
+Flask-CRUD/migrations/
+
+# -----------------------------
+# Node.js Projects (NodeJS-CRUD, ToDoApp)
+# -----------------------------
+NodeJS-CRUD/node_modules/
+NodeJS-CRUD/.env
+NodeJS-CRUD/dist/
+NodeJS-CRUD/.DS_Store
+NodeJS-CRUD/debug.log
+
+ToDoApp/node_modules/
+ToDoApp/.env
+ToDoApp/dist/
+ToDoApp/.DS_Store
+ToDoApp/debug.log
+
+# -----------------------------
+# Go / Gin Project (Gin-CRUD)
+# -----------------------------
+Gin-CRUD/bin/
+Gin-CRUD/pkg/
+Gin-CRUD/vendor/
+Gin-CRUD/.env
+Gin-CRUD/*.exe
+Gin-CRUD/*.test
+Gin-CRUD/coverage.out
+
+# Go build cache and artifacts
+**/*.exe
+**/*.test
+**/*.out
+
+# IDEs / Editors (optional but recommended)
+.vscode/
+.idea/
+*.swp
+*.swo
+*.bak
+*.log
