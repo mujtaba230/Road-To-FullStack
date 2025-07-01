@@ -1,10 +1,9 @@
-Sure! Below is a **complete, interactive, and detailed `README.md`** that you can include in your project or study materials. It covers all your requested topics with easy-to-follow explanations, use cases, and relevant code examples.
 
 ---
 
 # 🔐 Data Validation, Security & Middleware: A Complete Guide
 
-Welcome! This guide provides an overview of essential backend concepts including:
+Week 4 provides an overview of essential backend concepts including:
 
 * ✅ Data Validation & Sanitization
 * 🔐 Authentication (JWT vs. Sessions)
@@ -276,6 +275,3 @@ pip install marshmallow bleach flask-cors
 * [JWT Introduction](https://jwt.io/introduction)
 * [Express Middleware](https://expressjs.com/en/guide/using-middleware.html)
 
----
-
-Let me know if you want the same guide in `Markdown file format` or a rendered version in a documentation site like **Docusaurus** or **GitBook**.
