@@ -115,20 +115,135 @@ print(validated)
 | Scalable  | ✅ High                 | ❌ Needs sticky sessions  |
 | Use Case  | APIs, SPAs (React/Vue) | Traditional web apps     |
 
+
 ---
 
-### 🔑 Example – JWT Auth (Node.js)
+## 🔑 Session-Based Authentication (Traditional Approach)
+
+### 🧠 How it works:
+
+1. User logs in.
+2. Server validates credentials.
+3. Server **creates a session** in memory or database and gives the client a **session ID (cookie)**.
+4. On every request, the client sends the **session cookie**.
+5. Server checks the session store to see if it's valid.
+
+---
+
+### 📦 Example:
+
+```plaintext
+Login ➝ Server creates session ID: "abc123" ➝ Stores in DB
+Browser stores session cookie: "abc123"
+Future requests: include cookie "abc123"
+Server checks session DB and allows access
+```
+
+---
+
+### ✅ Pros:
+
+* Easy to implement
+* Server-controlled (easy logout or expiration)
+
+### ❌ Cons:
+
+* Server must **store session data** (not scalable)
+* Requires session syncing in load-balanced (multi-server) environments
+
+---
+
+## 🔐 JWT-Based Authentication (Modern/Stateless Approach)
+
+### 🧠 How it works:
+
+1. User logs in.
+2. Server verifies credentials.
+3. Server **creates a JWT** (signed token with user info) and sends it to the client.
+4. Client stores JWT (usually in `localStorage` or `cookies`).
+5. Every request includes the JWT in the **`Authorization` header**.
+6. Server **verifies the token signature** (no need to look it up in a DB).
+
+---
+
+### 🔧 JWT Format:
+
+```plaintext
+xxxxx.yyyyy.zzzzz
+
+Header.Payload.Signature
+```
+
+```json
+{
+  "userId": 123,
+  "role": "admin",
+  "exp": 1695558720
+}
+```
+
+---
+
+### 📦 Example:
 
 ```js
+// Generate Token
 const jwt = require('jsonwebtoken');
-
 const token = jwt.sign({ userId: 123 }, 'your-secret', { expiresIn: '1h' });
 
-jwt.verify(token, 'your-secret', (err, decoded) => {
-  if (err) return console.error('Invalid Token');
-  console.log(decoded.userId);
-});
+// Client stores it in localStorage or sends via header
+Authorization: Bearer <token>
 ```
+
+---
+
+### ✅ Pros:
+
+* **Stateless**: No server-side session storage
+* Easy to scale (works well with microservices)
+* Can contain **custom user info** (like role, id)
+
+### ❌ Cons:
+
+* Cannot be invalidated unless using a **token blacklist**
+* **Token stored on client** (needs secure storage, vulnerable to XSS if stored in localStorage)
+
+---
+
+## ⚔️ JWT vs Session – Side-by-Side Comparison
+
+| Feature        | JWT (Token-based)               | Session-based                      |
+| -------------- | ------------------------------- | ---------------------------------- |
+| Server storage | ❌ Stateless                     | ✅ Session data stored on server    |
+| Scalability    | ✅ Easily scalable               | ❌ Needs session sync (e.g., Redis) |
+| Stateless?     | ✅ Yes                           | ❌ No                               |
+| Logout control | ❌ Hard to revoke token          | ✅ Easy (delete session)            |
+| Use in APIs    | ✅ Ideal for REST APIs           | 👎 Less common                     |
+| Security risks | XSS (if stored in localStorage) | CSRF (if using cookies)            |
+| Expiry         | In-token expiry (`exp`)         | Server-managed expiry              |
+| Transport      | Sent in `Authorization` header  | Sent in cookie                     |
+
+---
+
+## 🔐 Which One Should You Use?
+
+| Use Case                    | Recommended Auth |
+| --------------------------- | ---------------- |
+| REST APIs / Mobile Apps     | ✅ JWT            |
+| Server-rendered websites    | ✅ Session-based  |
+| Microservices architecture  | ✅ JWT            |
+| You need fast logout/revoke | ✅ Session-based  |
+
+---
+
+## 🔐 Best Practices
+
+* Use HTTPS (always) to protect tokens and sessions.
+* Use **HttpOnly, Secure cookies** for session IDs.
+* Store JWTs in **HttpOnly cookies** (safer than localStorage).
+* For JWT, use short expiry + refresh tokens.
+* Rotate secret keys periodically.
+
 
 ---
 
