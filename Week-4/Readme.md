@@ -266,35 +266,6 @@ Authorization: Bearer <token>
 
 ---
 
-## 🧱 4. Middleware Concepts
-
-Middleware are functions that **execute during the request-response lifecycle** in frameworks like **Express**, **Django**, etc.
-
-### 📌 Responsibilities:
-
-* Validate input
-* Authenticate users
-* Log requests
-* Handle errors
-
-### ⚙️ Example – Express Middleware
-
-```js
-// Logger middleware
-app.use((req, res, next) => {
-  console.log(`${req.method} ${req.url}`);
-  next();
-});
-
-// Auth middleware
-function isAuthenticated(req, res, next) {
-  if (req.headers.authorization) return next();
-  res.status(401).send('Unauthorized');
-}
-```
-
----
-
 ## 🧰 5. Logging, Error Handling, Security Checks
 
 ### 🪵 Logging
