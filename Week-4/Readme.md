@@ -1,14 +1,12 @@
----
-
 # 🔐 Data Validation, Security & Middleware: A Complete Guide
 
 Week 4 provides an overview of essential backend concepts including:
 
-* ✅ Data Validation & Sanitization
-* 🔐 Authentication (JWT vs. Sessions)
-* 🚨 Basic Security (OWASP Top 10)
-* 🧱 Middleware Concepts
-* 🩵 Logging, 🧰 Error Handling, 🔍 Security Checks
+- ✅ Data Validation & Sanitization
+- 🔐 Authentication (JWT vs. Sessions)
+- 🚨 Basic Security (OWASP Top 10)
+- 🧱 Middleware Concepts
+- 🩵 Logging, 🧰 Error Handling, 🔍 Security Checks
 
 ---
 
@@ -20,9 +18,9 @@ Ensures incoming data is accurate, complete, and within expected constraints bef
 
 #### ✅ Example Use Cases:
 
-* Valid email format
-* Password complexity enforcement
-* Age within a specific range
+- Valid email format
+- Password complexity enforcement
+- Age within a specific range
 
 ### 📜 What is Data Sanitization?
 
@@ -30,9 +28,9 @@ Removes or escapes harmful input like script tags or SQL injection vectors.
 
 #### 🛡️ Common Sanitization Actions:
 
-* Remove HTML/JS tags (`<script>`)
-* Trim whitespaces
-* Escape special characters
+- Remove HTML/JS tags (`<script>`)
+- Trim whitespaces
+- Escape special characters
 
 ### 📦 Common Libraries
 
@@ -262,7 +260,7 @@ pip install marshmallow bleach flask-cors
 
 ## 📚 References
 
-* [OWASP Official Site](https://owasp.org)
-* [Joi Validation Docs](https://joi.dev)
-* [JWT Introduction](https://jwt.io/introduction)
-* [Express Middleware Guide](https://expressjs.com/en/guide/using-middleware.html)
+- [OWASP Official Site](https://owasp.org)
+- [Joi Validation Docs](https://joi.dev)
+- [JWT Introduction](https://jwt.io/introduction)
+- [Express Middleware Guide](https://expressjs.com/en/guide/using-middleware.html)
